@@ -1,25 +1,37 @@
 import './App.css';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
-import RouteTest from './components/RouteTest.js';
 import Home from './pages/Home.js';
 import New from './pages/New.js';
 import Edit from './pages/Edit.js';
 import Diary from './pages/Diary.js';
+
+// components
+import MyButton from './components/MyButton.js';
+import MyHeader from './components/MyHeader.js';
 
 
 function App() {
   return (
     <BrowserRouter>
       <div className="App">
+        <MyHeader 
+          headText={"App"} 
+          leftChild={<MyButton text={'왼쪽 버튼'} onClick={() => alert("왼쪽 클릭")} />} 
+          rightChild={<MyButton text={'오른쪽 버튼'} onClick={() => alert("오른쪽 클릭")} />}
+        />
         <h2>App.js</h2>
+
+        <MyButton text={'버튼'} onClick={() => alert("버튼 클릭")} type={"positive"}/>
+        <MyButton text={'버튼'} onClick={() => alert("버튼 클릭")} type={"negative"}/>
+        <MyButton text={'버튼'} onClick={() => alert("버튼 클릭")}/>
+        <MyButton text={'버튼'} onClick={() => alert("버튼 클릭")} type={"rewedfe"}/>
         <Routes>
           <Route path="/" element={<Home />}/>
           <Route path="/new" element={<New />}/>
           <Route path="/edit" element={<Edit />}/>
           <Route path="/diary/:id" element={<Diary />}/>
         </Routes>
-        <RouteTest />
       </div>
     </BrowserRouter>
   );
